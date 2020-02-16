@@ -1,0 +1,42 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "clang build",
+            "type": "shell",
+            "command": "clang++",
+            "args": ["--debug",
+                "-std=c++11",
+                "-stdlib=libc++",
+                "-o", "${fileBasenameNoExtension}.exe", 
+                "-I/usr/local/include",
+                "-L/usr/local/lib",
+                "-lglfw",
+                "renderer.cpp",
+                "includes/shader.cpp",
+                "includes/camera.cpp",
+                "includes/texture.cpp",
+                "includes/sphere.cpp",
+                "includes/light.cpp",
+                "includes/material.cpp",
+                "includes/materialPhong.cpp",
+                "includes/materialCookTorrance.cpp",
+                "includes/glad.c",
+                "includes/stb_image.cpp",
+                "includes/stb_image_resize.cpp",
+                "includes/stb_image_write.cpp"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "echo test",
+            "type": "shell",
+            "command": "echo ${env:VCPKGROOT}"
+        }
+    ]
+}
